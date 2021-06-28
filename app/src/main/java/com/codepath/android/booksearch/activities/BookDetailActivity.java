@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.codepath.android.booksearch.R;
@@ -33,8 +34,8 @@ public class BookDetailActivity extends AppCompatActivity {
         // unwrap book passed in via Intent, use simple name as key
         book = Parcels.unwrap(getIntent().getParcelableExtra(Book.class.getSimpleName()));
 
-        ActionBar actionBar = getSupportActionBar(); // or getActionBar();
-        actionBar.setTitle(book.getTitle()); // set the top title
+        //Toolbar toolbar = findViewById(R.id.toolbar); // or getActionBar();
+        //toolbar.setTitle(book.getTitle()); // set the top title
 
         // Use book object to populate data into views
         Glide.with(this)
