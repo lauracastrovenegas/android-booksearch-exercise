@@ -1,5 +1,6 @@
 package com.codepath.android.booksearch.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -23,6 +24,7 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -53,10 +55,15 @@ public class BookListActivity extends AppCompatActivity {
                         "An item at position " + position + " clicked!",
                         Toast.LENGTH_SHORT).show();
 
-                // Handle item click here:
-                // Create Intent to start BookDetailActivity
-                // Get Book at the given position
-                // Pass the book into details activity using extras
+                if (position != RecyclerView.NO_POSITION) {
+                    Book book = abooks.get(position);
+                    // create intent for new activity
+                    Intent intent = new Intent(BookListActivity.this, BookDetailActivity.class);
+                    // serialize movie using Parceler
+                    intent.putExtra(Book.class.getSimpleName(), Parcels.wrap(book));
+                    // show Activity
+                    BookListActivity.this.startActivity(intent);
+                }
             }
         });
 
